@@ -1034,7 +1034,7 @@ export default function Home() {
   }
 
   return (
-    <div className={`min-h-screen bg-black text-zinc-50 font-sans selection:bg-zinc-800 selection:text-white ${cookieConsent === null ? "pb-96" : ""}`}>
+    <div className="min-h-screen bg-black text-zinc-50 font-sans selection:bg-zinc-800 selection:text-white">
 
       {/* HEADER */}
       <header className="sticky top-0 z-40 w-full border-b border-white/5 bg-black/95 backdrop-blur-sm">
