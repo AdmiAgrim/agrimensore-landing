@@ -1102,7 +1102,7 @@ export default function Home() {
       </header>
 
       {/* 2. HERO SECTION CON TRUST BADGES */}
-      <section className="relative container mx-auto px-4 py-14 sm:py-32 md:py-40 flex flex-col items-center text-center overflow-hidden">
+      <section className="relative container mx-auto px-4 py-12 sm:py-20 md:py-28 flex flex-col items-center text-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-blue-500/5 pointer-events-none"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[300px] sm:h-[500px] bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.15),transparent_60%)] pointer-events-none"></div>
 
@@ -1149,9 +1149,9 @@ export default function Home() {
       </section>
 
       {/* 3. IL PROBLEMA */}
-      <section id="problema" className="border-t border-white/5 bg-zinc-950 py-16 sm:py-24 md:py-32 relative">
+      <section id="problema" className="border-t border-white/5 bg-zinc-950 py-12 sm:py-16 md:py-20 relative">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          <div className="text-center mb-10 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 tracking-tight">{t("problem_title")}</h2>
             <p className="text-zinc-400 max-w-2xl mx-auto font-light text-sm sm:text-base">
               {t("problem_desc")}
@@ -1185,7 +1185,7 @@ export default function Home() {
       </section>
 
       {/* 4. LA SOLUZIONE PULITA E ALLINEATA */}
-      <section id="soluzione" className="py-16 sm:py-24 md:py-32 container mx-auto px-4 border-t border-white/5">
+      <section id="soluzione" className="py-12 sm:py-16 md:py-20 container mx-auto px-4 border-t border-white/5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center max-w-6xl mx-auto">
           <div>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500">
@@ -1270,7 +1270,7 @@ export default function Home() {
       </section>
 
       {/* 5. GATED ACCESS */}
-      <section className="border-t border-white/5 bg-zinc-950/30 py-14 sm:py-28 md:py-32 relative overflow-hidden">
+      <section className="border-t border-white/5 bg-zinc-950/30 py-12 sm:py-16 md:py-20 relative overflow-hidden">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[200px] sm:h-[300px] bg-[radial-gradient(ellipse_at_bottom,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
         <div className="container mx-auto px-4 text-center max-w-2xl relative z-10">
           <HardHat className="w-10 sm:w-12 h-10 sm:h-12 mx-auto mb-6 sm:mb-8 text-zinc-600" />
@@ -1285,9 +1285,9 @@ export default function Home() {
       </section>
 
       {/* STEALTH MODE - SENZA PREZZI */}
-      <section id="pricing" className="py-12 sm:py-16 md:py-32 container mx-auto px-4 border-t border-white/5 bg-gradient-to-b from-black to-emerald-950/5 font-sans relative">
+      <section id="pricing" className="py-12 sm:py-16 md:py-20 container mx-auto px-4 border-t border-white/5 bg-gradient-to-b from-black to-emerald-950/5 font-sans relative">
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/3 via-transparent to-blue-500/3 pointer-events-none"></div>
-        <div className="text-center mb-12 sm:mb-16 relative z-10">
+        <div className="text-center mb-10 sm:mb-12 relative z-10">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-emerald-300 uppercase">{t("pricing_title")}</h2>
           <p className="text-zinc-400 max-w-2xl mx-auto font-light text-xs sm:text-sm">{t("pricing_subtitle")}</p>
         </div>
@@ -1389,9 +1389,9 @@ export default function Home() {
       </section>
 
       {/* INFRASTRUCTURE & SECURITY SECTION */}
-      <section className="py-16 md:py-32 border-t border-white/5 bg-gradient-to-b from-black via-emerald-950/10 to-black">
+      <section className="py-12 md:py-20 border-t border-white/5 bg-gradient-to-b from-black via-emerald-950/10 to-black">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-emerald-300">
               {t("infra_title")}
             </h2>
@@ -1518,7 +1518,7 @@ export default function Home() {
       </section>
 
       {/* GLOSSARIO MINIMAL - SOLO AWS GENERICO */}
-      <section className="py-16 md:py-24 border-t border-white/5">
+      <section className="py-10 md:py-16 border-t border-white/5">
         <div className="container mx-auto px-4 max-w-3xl">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 tracking-tight">Perché AWS?</h2>
 
@@ -1552,8 +1552,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <footer className="border-t border-white/10 py-12 text-zinc-600 text-xs bg-black">
-        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <footer className="border-t border-white/10 py-8 text-zinc-600 text-xs bg-black">
+        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div>
             <strong className="text-zinc-400 text-sm block mb-3 font-medium">Agrimensore SRLS</strong>
             <p className="text-sm">Sede Legale:</p>
@@ -1582,7 +1582,7 @@ export default function Home() {
             <p>Capitale: € 1.000,00 i.v.</p>
           </div>
         </div>
-        <div className="container mx-auto px-4 mt-8 pt-8 border-t border-zinc-800/50 text-center text-zinc-700 text-xs">
+        <div className="container mx-auto px-4 mt-6 pt-6 border-t border-zinc-800/50 text-center text-zinc-700 text-xs">
           <p>{t("footer_copyright")}</p>
         </div>
       </footer>
