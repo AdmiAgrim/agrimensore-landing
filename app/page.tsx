@@ -1102,7 +1102,7 @@ export default function Home() {
       </header>
 
       {/* 2. HERO SECTION CON TRUST BADGES */}
-      <section className="relative container mx-auto px-4 py-24 sm:py-32 md:py-40 flex flex-col items-center text-center overflow-hidden">
+      <section className="relative container mx-auto px-4 py-14 sm:py-32 md:py-40 flex flex-col items-center text-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-blue-500/5 pointer-events-none"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[300px] sm:h-[500px] bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.15),transparent_60%)] pointer-events-none"></div>
 
@@ -1270,7 +1270,7 @@ export default function Home() {
       </section>
 
       {/* 5. GATED ACCESS */}
-      <section className="border-t border-white/5 bg-zinc-950/30 py-20 sm:py-28 md:py-32 relative overflow-hidden">
+      <section className="border-t border-white/5 bg-zinc-950/30 py-14 sm:py-28 md:py-32 relative overflow-hidden">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[200px] sm:h-[300px] bg-[radial-gradient(ellipse_at_bottom,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
         <div className="container mx-auto px-4 text-center max-w-2xl relative z-10">
           <HardHat className="w-10 sm:w-12 h-10 sm:h-12 mx-auto mb-6 sm:mb-8 text-zinc-600" />
