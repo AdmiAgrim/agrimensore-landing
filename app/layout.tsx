@@ -16,7 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   ...seoMetadata,
   icons: {
-    icon: '/logo.svg',
+    icon: [
+      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '48x48' },
+    ],
   },
 };
 
