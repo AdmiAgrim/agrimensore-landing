@@ -102,7 +102,12 @@ export const jsonLd = [
     '@type': 'Organization',
     name: 'Agrimensore SRLS',
     url: BASE_URL,
-    logo: `${BASE_URL}/logo.svg`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${BASE_URL}/logo.png`,
+      width: 172,
+      height: 322,
+    },
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Piazza Buffoni 5',
