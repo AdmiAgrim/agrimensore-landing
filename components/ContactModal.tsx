@@ -47,8 +47,8 @@ export function ContactModal({ isOpen, onClose, t }: ContactModalProps) {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="relative w-full max-w-lg bg-zinc-950 border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm dark:bg-black/80">
+      <div className="relative w-full max-w-lg bg-white border border-stone-200 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 dark:bg-zinc-950 dark:border-zinc-800">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-2 text-zinc-500 hover:text-white transition-colors"
@@ -58,10 +58,10 @@ export function ContactModal({ isOpen, onClose, t }: ContactModalProps) {
         </button>
 
         <div className="p-8">
-          <h3 className="text-2xl font-bold text-white mb-2 tracking-tight">
+          <h3 className="text-2xl font-bold text-zinc-900 mb-2 tracking-tight dark:text-white">
             Verifica la tua idoneità
           </h3>
-          <p className="text-zinc-400 text-sm mb-6">
+          <p className="text-zinc-600 text-sm mb-6 dark:text-zinc-400">
             Compila i dati per capire se la nostra infrastruttura è adatta ai tuoi volumi
             di cantiere. Ti risponderemo in 24 ore.
           </p>
@@ -82,7 +82,7 @@ export function ContactModal({ isOpen, onClose, t }: ContactModalProps) {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-xs font-medium text-zinc-300 mb-1.5 uppercase tracking-wider">
+              <label htmlFor="email" className="block text-xs font-medium text-zinc-600 mb-1.5 uppercase tracking-wider dark:text-zinc-300">
                 Email Aziendale *
               </label>
               <input
@@ -91,13 +91,13 @@ export function ContactModal({ isOpen, onClose, t }: ContactModalProps) {
                 name="email"
                 required
                 placeholder="nome@tuaazienda.it"
-                className="w-full h-11 bg-black border border-zinc-800 rounded-md px-4 text-white placeholder-zinc-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/20 transition-colors"
+                className="w-full h-11 bg-stone-50 border border-stone-200 rounded-md px-4 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/20 transition-colors dark:bg-black dark:border-zinc-800 dark:text-white dark:placeholder-zinc-600"
                 disabled={isSubmitting}
               />
             </div>
 
             <div>
-              <label htmlFor="azienda" className="block text-xs font-medium text-zinc-300 mb-1.5 uppercase tracking-wider">
+              <label htmlFor="azienda" className="block text-xs font-medium text-zinc-600 mb-1.5 uppercase tracking-wider dark:text-zinc-300">
                 Nome Impresa *
               </label>
               <input
@@ -106,13 +106,13 @@ export function ContactModal({ isOpen, onClose, t }: ContactModalProps) {
                 name="azienda"
                 required
                 placeholder="Edilizia Rossi SRL"
-                className="w-full h-11 bg-black border border-zinc-800 rounded-md px-4 text-white placeholder-zinc-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/20 transition-colors"
+                className="w-full h-11 bg-stone-50 border border-stone-200 rounded-md px-4 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/20 transition-colors dark:bg-black dark:border-zinc-800 dark:text-white dark:placeholder-zinc-600"
                 disabled={isSubmitting}
               />
             </div>
 
             <div>
-              <label htmlFor="cantieri" className="block text-xs font-medium text-zinc-300 mb-1.5 uppercase tracking-wider">
+              <label htmlFor="cantieri" className="block text-xs font-medium text-zinc-600 mb-1.5 uppercase tracking-wider dark:text-zinc-300">
                 Cantieri aperti in media all&apos;anno *
               </label>
               <select
@@ -120,7 +120,7 @@ export function ContactModal({ isOpen, onClose, t }: ContactModalProps) {
                 name="cantieri"
                 defaultValue=""
                 required
-                className="w-full h-11 bg-black border border-zinc-800 rounded-md px-4 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/20 transition-colors appearance-none"
+                className="w-full h-11 bg-stone-50 border border-stone-200 rounded-md px-4 text-zinc-900 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/20 transition-colors appearance-none dark:bg-black dark:border-zinc-800 dark:text-white"
                 disabled={isSubmitting}
               >
                 <option value="" disabled>
@@ -133,7 +133,7 @@ export function ContactModal({ isOpen, onClose, t }: ContactModalProps) {
             </div>
 
             <div>
-              <label htmlFor="ruolo" className="block text-xs font-medium text-zinc-300 mb-1.5 uppercase tracking-wider">
+              <label htmlFor="ruolo" className="block text-xs font-medium text-zinc-600 mb-1.5 uppercase tracking-wider dark:text-zinc-300">
                 Il tuo ruolo *
               </label>
               <select
@@ -141,7 +141,7 @@ export function ContactModal({ isOpen, onClose, t }: ContactModalProps) {
                 name="ruolo"
                 defaultValue=""
                 required
-                className="w-full h-11 bg-black border border-zinc-800 rounded-md px-4 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/20 transition-colors appearance-none"
+                className="w-full h-11 bg-stone-50 border border-stone-200 rounded-md px-4 text-zinc-900 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/20 transition-colors appearance-none dark:bg-black dark:border-zinc-800 dark:text-white"
                 disabled={isSubmitting}
               >
                 <option value="" disabled>
