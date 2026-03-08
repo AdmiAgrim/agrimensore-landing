@@ -1034,10 +1034,10 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-zinc-50 font-sans selection:bg-zinc-800 selection:text-white">
+    <div className="min-h-screen bg-stone-50 text-zinc-900 font-sans selection:bg-stone-200 selection:text-zinc-900 dark:bg-black dark:text-zinc-50 dark:selection:bg-zinc-800 dark:selection:text-white">
 
       {/* HEADER */}
-      <header className="sticky top-0 z-40 w-full border-b border-white/5 bg-black/95 backdrop-blur-sm">
+      <header className="sticky top-0 z-40 w-full border-b border-black/5 bg-stone-50/95 backdrop-blur-sm dark:border-white/5 dark:bg-black/95">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           {/* Logo */}
           <div className="font-bold text-lg md:text-xl tracking-tighter flex items-center gap-2 flex-shrink-0">
@@ -1047,10 +1047,10 @@ export default function Home() {
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex gap-8 text-sm font-medium text-zinc-400 absolute left-1/2 -translate-x-1/2">
-            <button onClick={() => scrollToSection("problema")} className="hover:text-white transition-colors">{t("header_caos")}</button>
-            <button onClick={() => scrollToSection("soluzione")} className="hover:text-white transition-colors">{t("header_flusso")}</button>
-            <button onClick={() => scrollToSection("pricing")} className="hover:text-white transition-colors">{t("header_prezzi")}</button>
+          <nav className="hidden md:flex gap-8 text-sm font-medium text-zinc-500 absolute left-1/2 -translate-x-1/2 dark:text-zinc-400">
+            <button onClick={() => scrollToSection("problema")} className="hover:text-zinc-900 transition-colors dark:hover:text-white">{t("header_caos")}</button>
+            <button onClick={() => scrollToSection("soluzione")} className="hover:text-zinc-900 transition-colors dark:hover:text-white">{t("header_flusso")}</button>
+            <button onClick={() => scrollToSection("pricing")} className="hover:text-zinc-900 transition-colors dark:hover:text-white">{t("header_prezzi")}</button>
           </nav>
 
           {/* Right Section */}
@@ -1059,13 +1059,13 @@ export default function Home() {
             <div className="relative">
               <button
                 onClick={() => setShowLangMenu(!showLangMenu)}
-                className="flex items-center gap-1 text-zinc-400 hover:text-white transition-colors text-xs sm:text-sm font-semibold uppercase tracking-wider p-2"
+                className="flex items-center gap-1 text-zinc-500 hover:text-zinc-900 transition-colors text-xs sm:text-sm font-semibold uppercase tracking-wider p-2 dark:text-zinc-400 dark:hover:text-white"
               >
                 <Globe className="w-4 h-4" />
                 <span className="hidden xs:inline text-xs">{LANGUAGES[currentLang]?.flag}</span>
               </button>
               {showLangMenu && (
-                <div className="absolute right-0 mt-2 w-48 bg-zinc-950 border border-zinc-800 rounded-lg shadow-xl z-50">
+                <div className="absolute right-0 mt-2 w-48 bg-white border border-stone-200 rounded-lg shadow-xl z-50 dark:bg-zinc-950 dark:border-zinc-800">
                   {Object.entries(LANGUAGES).map(([code, { name, flag }]) => (
                     <button
                       key={code}
@@ -1079,8 +1079,8 @@ export default function Home() {
                       }}
                       className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
                         currentLang === code
-                          ? "bg-zinc-800 text-white font-semibold"
-                          : "text-zinc-300 hover:bg-zinc-800 hover:text-white"
+                          ? "bg-stone-100 text-zinc-900 font-semibold dark:bg-zinc-800 dark:text-white"
+                          : "text-zinc-600 hover:bg-stone-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"
                       }`}
                     >
                       {flag} {name}
@@ -1093,7 +1093,7 @@ export default function Home() {
             {/* CTA Button */}
             <Button
               onClick={() => setIsModalOpen(true)}
-              className="bg-white text-black hover:bg-zinc-200 text-xs sm:text-sm h-9 px-3 sm:px-4 font-semibold flex-shrink-0"
+              className="bg-zinc-900 text-white hover:bg-zinc-800 text-xs sm:text-sm h-9 px-3 sm:px-4 font-semibold flex-shrink-0 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
             >
               {t("header_accesso")}
             </Button>
@@ -1106,28 +1106,28 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-blue-500/5 pointer-events-none"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[300px] sm:h-[500px] bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.15),transparent_60%)] pointer-events-none"></div>
 
-        <Badge variant="outline" className="mb-6 sm:mb-8 py-1.5 px-4 text-xs font-medium border-zinc-700/50 text-zinc-300 rounded-full bg-gradient-to-r from-zinc-900/80 to-zinc-800/80 backdrop-blur-sm">
+        <Badge variant="outline" className="mb-6 sm:mb-8 py-1.5 px-4 text-xs font-medium border-stone-300 text-zinc-600 rounded-full bg-gradient-to-r from-stone-100 to-stone-50 backdrop-blur-sm dark:border-zinc-700/50 dark:text-zinc-300 dark:from-zinc-900/80 dark:to-zinc-800/80">
           <ShieldCheck className="w-4 h-4 mr-2 text-emerald-400" />
           {t("hero_badge")}
         </Badge>
 
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter max-w-5xl mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-zinc-500 relative z-10">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter max-w-5xl mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-500 relative z-10 dark:from-white dark:via-white dark:to-zinc-500">
           {t("hero_title")}
         </h1>
 
-        <p className="text-base sm:text-lg md:text-xl text-zinc-400 max-w-2xl mb-8 sm:mb-10 leading-relaxed font-light relative z-10">
+        <p className="text-base sm:text-lg md:text-xl text-zinc-600 max-w-2xl mb-8 sm:mb-10 leading-relaxed font-light relative z-10 dark:text-zinc-400">
           {t("hero_desc")}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 relative z-10 w-full px-0 sm:w-auto justify-center">
-          <Button onClick={() => setIsModalOpen(true)} size="lg" className="bg-gradient-to-r from-white to-zinc-100 text-black hover:from-zinc-50 hover:to-white h-12 sm:h-12 px-6 sm:px-8 font-semibold rounded-md w-full sm:w-auto shadow-lg hover:shadow-xl transition-all text-sm sm:text-base">
+          <Button onClick={() => setIsModalOpen(true)} size="lg" className="bg-gradient-to-r from-zinc-900 to-zinc-800 text-white hover:from-zinc-800 hover:to-zinc-700 h-12 sm:h-12 px-6 sm:px-8 font-semibold rounded-md w-full sm:w-auto shadow-lg hover:shadow-xl transition-all text-sm sm:text-base dark:from-white dark:to-zinc-100 dark:text-black dark:hover:from-zinc-50 dark:hover:to-white">
             {t("hero_button_1")}
           </Button>
           <Button
             onClick={() => scrollToSection("soluzione")}
             size="lg"
             variant="outline"
-            className="border-emerald-500/30 hover:bg-emerald-500/10 text-zinc-300 hover:text-emerald-300 h-12 sm:h-12 px-6 sm:px-8 rounded-md w-full sm:w-auto group bg-gradient-to-r from-transparent to-emerald-500/5 text-sm sm:text-base"
+            className="border-emerald-500/40 hover:bg-emerald-500/10 text-zinc-600 hover:text-emerald-700 h-12 sm:h-12 px-6 sm:px-8 rounded-md w-full sm:w-auto group bg-gradient-to-r from-transparent to-emerald-500/5 text-sm sm:text-base dark:border-emerald-500/30 dark:text-zinc-300 dark:hover:text-emerald-300"
           >
             {t("hero_button_2")}
             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -1135,13 +1135,13 @@ export default function Home() {
         </div>
 
         {/* TRUST BADGES: Svizzera + Italia */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 mt-8 sm:mt-12 text-xs sm:text-sm text-zinc-400 font-medium relative z-10">
-          <div className="flex items-center gap-2 bg-zinc-900/50 px-3 sm:px-4 py-2 rounded-full border border-zinc-800/50 backdrop-blur-sm">
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 mt-8 sm:mt-12 text-xs sm:text-sm text-zinc-600 font-medium relative z-10 dark:text-zinc-400">
+          <div className="flex items-center gap-2 bg-stone-100/80 px-3 sm:px-4 py-2 rounded-full border border-stone-200 backdrop-blur-sm dark:bg-zinc-900/50 dark:border-zinc-800/50">
             <span className="text-base">🇨🇭</span>
             <span>{t("hero_trust_swiss")}</span>
           </div>
-          <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-zinc-800"></div>
-          <div className="flex items-center gap-2 bg-zinc-900/50 px-3 sm:px-4 py-2 rounded-full border border-zinc-800/50 backdrop-blur-sm">
+          <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-stone-300 dark:bg-zinc-800"></div>
+          <div className="flex items-center gap-2 bg-stone-100/80 px-3 sm:px-4 py-2 rounded-full border border-stone-200 backdrop-blur-sm dark:bg-zinc-900/50 dark:border-zinc-800/50">
             <span className="text-base">🇮🇹</span>
             <span>{t("hero_security")}</span>
           </div>
@@ -1149,35 +1149,35 @@ export default function Home() {
       </section>
 
       {/* 3. IL PROBLEMA */}
-      <section id="problema" className="border-t border-white/5 bg-zinc-950 py-12 sm:py-16 md:py-20 relative">
+      <section id="problema" className="border-t border-black/5 bg-white py-12 sm:py-16 md:py-20 relative dark:border-white/5 dark:bg-zinc-950">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 tracking-tight">{t("problem_title")}</h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto font-light text-sm sm:text-base">
+            <p className="text-zinc-500 max-w-2xl mx-auto font-light text-sm sm:text-base dark:text-zinc-400">
               {t("problem_desc")}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 max-w-6xl mx-auto">
-            <Card className="bg-black border-zinc-800/60 shadow-2xl hover:border-zinc-600 transition-colors duration-300">
+            <Card className="bg-stone-50 border-stone-200 shadow-sm hover:border-stone-300 transition-colors duration-300 dark:bg-black dark:border-zinc-800/60 dark:shadow-2xl dark:hover:border-zinc-600">
               <CardContent className="pt-8 pb-8 px-8">
-                <SearchX className="w-8 h-8 text-zinc-200 mb-6" />
-                <h3 className="font-semibold text-xl mb-3 text-zinc-100">{t("problem_box_1_title")}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">{t("problem_box_1_desc")}</p>
+                <SearchX className="w-8 h-8 text-zinc-500 mb-6 dark:text-zinc-200" />
+                <h3 className="font-semibold text-xl mb-3 text-zinc-800 dark:text-zinc-100">{t("problem_box_1_title")}</h3>
+                <p className="text-zinc-500 text-sm leading-relaxed dark:text-zinc-400">{t("problem_box_1_desc")}</p>
               </CardContent>
             </Card>
-            <Card className="bg-black border-zinc-800/60 shadow-2xl hover:border-zinc-600 transition-colors duration-300">
+            <Card className="bg-stone-50 border-stone-200 shadow-sm hover:border-stone-300 transition-colors duration-300 dark:bg-black dark:border-zinc-800/60 dark:shadow-2xl dark:hover:border-zinc-600">
               <CardContent className="pt-8 pb-8 px-8">
-                <FileWarning className="w-8 h-8 text-zinc-200 mb-6" />
-                <h3 className="font-semibold text-xl mb-3 text-zinc-100">{t("problem_box_2_title")}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">{t("problem_box_2_desc")}</p>
+                <FileWarning className="w-8 h-8 text-zinc-500 mb-6 dark:text-zinc-200" />
+                <h3 className="font-semibold text-xl mb-3 text-zinc-800 dark:text-zinc-100">{t("problem_box_2_title")}</h3>
+                <p className="text-zinc-500 text-sm leading-relaxed dark:text-zinc-400">{t("problem_box_2_desc")}</p>
               </CardContent>
             </Card>
-            <Card className="bg-black border-zinc-800/60 shadow-2xl hover:border-zinc-600 transition-colors duration-300">
+            <Card className="bg-stone-50 border-stone-200 shadow-sm hover:border-stone-300 transition-colors duration-300 dark:bg-black dark:border-zinc-800/60 dark:shadow-2xl dark:hover:border-zinc-600">
               <CardContent className="pt-8 pb-8 px-8">
-                <HardHat className="w-8 h-8 text-zinc-200 mb-6" />
-                <h3 className="font-semibold text-xl mb-3 text-zinc-100">{t("problem_box_3_title")}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">{t("problem_box_3_desc")}</p>
+                <HardHat className="w-8 h-8 text-zinc-500 mb-6 dark:text-zinc-200" />
+                <h3 className="font-semibold text-xl mb-3 text-zinc-800 dark:text-zinc-100">{t("problem_box_3_title")}</h3>
+                <p className="text-zinc-500 text-sm leading-relaxed dark:text-zinc-400">{t("problem_box_3_desc")}</p>
               </CardContent>
             </Card>
           </div>
@@ -1185,83 +1185,83 @@ export default function Home() {
       </section>
 
       {/* 4. LA SOLUZIONE PULITA E ALLINEATA */}
-      <section id="soluzione" className="py-12 sm:py-16 md:py-20 container mx-auto px-4 border-t border-white/5">
+      <section id="soluzione" className="py-12 sm:py-16 md:py-20 container mx-auto px-4 border-t border-black/5 dark:border-white/5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center max-w-6xl mx-auto">
           <div>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 to-zinc-500 dark:from-white dark:to-zinc-500">
               {t("solution_main_title")}
             </h2>
-            <p className="text-zinc-400 mb-8 sm:mb-10 leading-relaxed font-light text-sm sm:text-base">
+            <p className="text-zinc-600 mb-8 sm:mb-10 leading-relaxed font-light text-sm sm:text-base dark:text-zinc-400">
               {t("solution_main_desc")}
             </p>
 
             <div className="space-y-8 mt-10">
               <div className="flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-zinc-600 transition-colors">
-                  <FolderLock className="w-5 h-5 text-zinc-300" />
+                <div className="w-10 h-10 rounded-lg bg-stone-100 border border-stone-200 flex items-center justify-center shrink-0 group-hover:border-stone-300 transition-colors dark:bg-zinc-900 dark:border-zinc-800 dark:group-hover:border-zinc-600">
+                  <FolderLock className="w-5 h-5 text-zinc-500 dark:text-zinc-300" />
                 </div>
                 <div>
-                  <strong className="block text-zinc-100 font-semibold text-lg mb-1">{t("feature_1_title")}</strong>
-                  <span className="text-sm text-zinc-400 leading-relaxed block">{t("feature_1_desc")}</span>
+                  <strong className="block text-zinc-800 font-semibold text-lg mb-1 dark:text-zinc-100">{t("feature_1_title")}</strong>
+                  <span className="text-sm text-zinc-500 leading-relaxed block dark:text-zinc-400">{t("feature_1_desc")}</span>
                 </div>
               </div>
 
               <div className="flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-zinc-600 transition-colors">
-                  <LinkIcon className="w-5 h-5 text-zinc-300" />
+                <div className="w-10 h-10 rounded-lg bg-stone-100 border border-stone-200 flex items-center justify-center shrink-0 group-hover:border-stone-300 transition-colors dark:bg-zinc-900 dark:border-zinc-800 dark:group-hover:border-zinc-600">
+                  <LinkIcon className="w-5 h-5 text-zinc-500 dark:text-zinc-300" />
                 </div>
                 <div>
-                  <strong className="block text-zinc-100 font-semibold text-lg mb-1">{t("feature_2_title")}</strong>
-                  <span className="text-sm text-zinc-400 leading-relaxed block">{t("feature_2_desc")}</span>
+                  <strong className="block text-zinc-800 font-semibold text-lg mb-1 dark:text-zinc-100">{t("feature_2_title")}</strong>
+                  <span className="text-sm text-zinc-500 leading-relaxed block dark:text-zinc-400">{t("feature_2_desc")}</span>
                 </div>
               </div>
 
               <div className="flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-zinc-600 transition-colors">
-                  <Server className="w-5 h-5 text-zinc-300" />
+                <div className="w-10 h-10 rounded-lg bg-stone-100 border border-stone-200 flex items-center justify-center shrink-0 group-hover:border-stone-300 transition-colors dark:bg-zinc-900 dark:border-zinc-800 dark:group-hover:border-zinc-600">
+                  <Server className="w-5 h-5 text-zinc-500 dark:text-zinc-300" />
                 </div>
                 <div>
-                  <strong className="block text-zinc-100 font-semibold text-lg mb-1">{t("feature_3_title")}</strong>
-                  <span className="text-sm text-zinc-400 leading-relaxed block">{t("feature_3_desc")}</span>
+                  <strong className="block text-zinc-800 font-semibold text-lg mb-1 dark:text-zinc-100">{t("feature_3_title")}</strong>
+                  <span className="text-sm text-zinc-500 leading-relaxed block dark:text-zinc-400">{t("feature_3_desc")}</span>
                 </div>
               </div>
 
               <div className="flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-zinc-600 transition-colors">
-                  <ShieldCheck className="w-5 h-5 text-zinc-300" />
+                <div className="w-10 h-10 rounded-lg bg-stone-100 border border-stone-200 flex items-center justify-center shrink-0 group-hover:border-stone-300 transition-colors dark:bg-zinc-900 dark:border-zinc-800 dark:group-hover:border-zinc-600">
+                  <ShieldCheck className="w-5 h-5 text-zinc-500 dark:text-zinc-300" />
                 </div>
                 <div>
-                  <strong className="block text-zinc-100 font-semibold text-lg mb-1">{t("feature_4_title")}</strong>
-                  <span className="text-sm text-zinc-400 leading-relaxed block">{t("feature_4_desc")}</span>
+                  <strong className="block text-zinc-800 font-semibold text-lg mb-1 dark:text-zinc-100">{t("feature_4_title")}</strong>
+                  <span className="text-sm text-zinc-500 leading-relaxed block dark:text-zinc-400">{t("feature_4_desc")}</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* MOCKUP VISIVO */}
-          <div className="relative h-[400px] w-full bg-zinc-950 rounded-2xl border border-zinc-800 flex flex-col items-center justify-center p-8 overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.03),transparent_60%)]"></div>
-            <div className="w-full max-w-sm bg-black border border-zinc-800 rounded-xl overflow-hidden z-10 shadow-2xl">
-              <div className="h-8 border-b border-zinc-800 bg-zinc-950 flex items-center px-4 gap-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-zinc-800"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-zinc-800"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-zinc-800"></div>
+          <div className="relative h-[400px] w-full bg-stone-100 rounded-2xl border border-stone-200 flex flex-col items-center justify-center p-8 overflow-hidden shadow-sm dark:bg-zinc-950 dark:border-zinc-800 dark:shadow-2xl">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.03),transparent_60%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.03),transparent_60%)]"></div>
+            <div className="w-full max-w-sm bg-white border border-stone-200 rounded-xl overflow-hidden z-10 shadow-md dark:bg-black dark:border-zinc-800 dark:shadow-2xl">
+              <div className="h-8 border-b border-stone-200 bg-stone-50 flex items-center px-4 gap-2 dark:border-zinc-800 dark:bg-zinc-950">
+                <div className="w-2.5 h-2.5 rounded-full bg-stone-300 dark:bg-zinc-800"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-stone-300 dark:bg-zinc-800"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-stone-300 dark:bg-zinc-800"></div>
               </div>
               <div className="p-5 space-y-4">
-                <div className="h-2 w-24 bg-zinc-800 rounded-full"></div>
-                <div className="flex items-center justify-between p-3 border border-zinc-800 rounded-lg bg-zinc-950/50">
+                <div className="h-2 w-24 bg-stone-200 rounded-full dark:bg-zinc-800"></div>
+                <div className="flex items-center justify-between p-3 border border-stone-200 rounded-lg bg-stone-50/80 dark:border-zinc-800 dark:bg-zinc-950/50">
                   <div className="flex items-center gap-3">
-                    <FileWarning className="w-4 h-4 text-zinc-500" />
-                    <div className="h-2 w-32 bg-zinc-700 rounded-full"></div>
+                    <FileWarning className="w-4 h-4 text-zinc-400 dark:text-zinc-500" />
+                    <div className="h-2 w-32 bg-stone-300 rounded-full dark:bg-zinc-700"></div>
                   </div>
                   <div className="h-2 w-8 bg-green-500/50 rounded-full"></div>
                 </div>
-                <div className="flex items-center justify-between p-3 border border-zinc-800 rounded-lg bg-zinc-950/50">
+                <div className="flex items-center justify-between p-3 border border-stone-200 rounded-lg bg-stone-50/80 dark:border-zinc-800 dark:bg-zinc-950/50">
                   <div className="flex items-center gap-3">
-                    <LinkIcon className="w-4 h-4 text-zinc-500" />
-                    <div className="h-2 w-28 bg-zinc-700 rounded-full"></div>
+                    <LinkIcon className="w-4 h-4 text-zinc-400 dark:text-zinc-500" />
+                    <div className="h-2 w-28 bg-stone-300 rounded-full dark:bg-zinc-700"></div>
                   </div>
-                  <div className="h-2 w-8 bg-zinc-800 rounded-full"></div>
+                  <div className="h-2 w-8 bg-stone-200 rounded-full dark:bg-zinc-800"></div>
                 </div>
               </div>
             </div>
@@ -1270,35 +1270,34 @@ export default function Home() {
       </section>
 
       {/* 5. GATED ACCESS */}
-      <section className="border-t border-white/5 bg-zinc-950/30 py-12 sm:py-16 md:py-20 relative overflow-hidden">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[200px] sm:h-[300px] bg-[radial-gradient(ellipse_at_bottom,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
+      <section className="border-t border-black/5 bg-stone-100 py-12 sm:py-16 md:py-20 relative overflow-hidden dark:border-white/5 dark:bg-zinc-950/30">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[200px] sm:h-[300px] bg-[radial-gradient(ellipse_at_bottom,rgba(0,0,0,0.04),transparent_60%)] pointer-events-none dark:bg-[radial-gradient(ellipse_at_bottom,rgba(255,255,255,0.05),transparent_60%)]"></div>
         <div className="container mx-auto px-4 text-center max-w-2xl relative z-10">
-          <HardHat className="w-10 sm:w-12 h-10 sm:h-12 mx-auto mb-6 sm:mb-8 text-zinc-600" />
+          <HardHat className="w-10 sm:w-12 h-10 sm:h-12 mx-auto mb-6 sm:mb-8 text-zinc-400 dark:text-zinc-600" />
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 tracking-tight">{t("gated_section_title")}</h2>
-          <p className="text-zinc-400 mb-8 sm:mb-10 text-sm sm:text-base font-light leading-relaxed">
+          <p className="text-zinc-600 mb-8 sm:mb-10 text-sm sm:text-base font-light leading-relaxed dark:text-zinc-400">
             {t("gated_section_desc")}
           </p>
-          <Button onClick={() => setIsModalOpen(true)} size="lg" className="bg-white text-black hover:bg-zinc-200 h-12 px-6 sm:px-8 font-semibold rounded-md w-full sm:w-auto text-sm sm:text-base">
+          <Button onClick={() => setIsModalOpen(true)} size="lg" className="bg-zinc-900 text-white hover:bg-zinc-800 h-12 px-6 sm:px-8 font-semibold rounded-md w-full sm:w-auto text-sm sm:text-base dark:bg-white dark:text-black dark:hover:bg-zinc-200">
             Richiedi Accesso
           </Button>
         </div>
       </section>
 
       {/* STEALTH MODE - SENZA PREZZI */}
-      <section id="pricing" className="py-12 sm:py-16 md:py-20 container mx-auto px-4 border-t border-white/5 bg-gradient-to-b from-black to-emerald-950/5 font-sans relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/3 via-transparent to-blue-500/3 pointer-events-none"></div>
+      <section id="pricing" className="py-12 sm:py-16 md:py-20 container mx-auto px-4 border-t border-black/5 font-sans relative dark:border-white/5">
         <div className="text-center mb-10 sm:mb-12 relative z-10">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-emerald-300 uppercase">{t("pricing_title")}</h2>
-          <p className="text-zinc-400 max-w-2xl mx-auto font-light text-xs sm:text-sm">{t("pricing_subtitle")}</p>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 via-zinc-800 to-emerald-600 uppercase dark:from-white dark:via-white dark:to-emerald-300">{t("pricing_title")}</h2>
+          <p className="text-zinc-600 max-w-2xl mx-auto font-light text-xs sm:text-sm dark:text-zinc-400">{t("pricing_subtitle")}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto relative z-10">
-          
+
           {/* 1. LIBERO PROFESSIONISTA */}
-          <Card className="bg-gradient-to-br from-zinc-950 to-zinc-950/60 border-zinc-800/40 hover:border-emerald-500/20 transition-all">
+          <Card className="bg-white border-stone-200 hover:border-emerald-500/40 transition-all dark:bg-gradient-to-br dark:from-zinc-950 dark:to-zinc-950/60 dark:border-zinc-800/40 dark:hover:border-emerald-500/20">
             <CardContent className="pt-10 px-6 sm:px-8 flex-1">
-              <h3 className="text-xl font-bold text-white mb-6 uppercase tracking-widest">{t("plan_professional")}</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed mb-8 h-28 italic">
+              <h3 className="text-xl font-bold text-zinc-900 mb-6 uppercase tracking-widest dark:text-white">{t("plan_professional")}</h3>
+              <p className="text-zinc-600 text-sm leading-relaxed mb-8 h-28 italic dark:text-zinc-400">
                 {t("plan_professional_desc")}
               </p>
               <div className="space-y-4 mb-8">
@@ -1310,15 +1309,15 @@ export default function Home() {
                   t("plan_professional_feature_5"),
                   t("plan_professional_feature_6")
                 ].map((feature, i) => (
-                  <div key={i} className="flex items-center gap-3 text-sm text-zinc-300">
-                    <ShieldCheck className="w-4 h-4 text-zinc-500 shrink-0" />
+                  <div key={i} className="flex items-center gap-3 text-sm text-zinc-700 dark:text-zinc-300">
+                    <ShieldCheck className="w-4 h-4 text-zinc-400 shrink-0 dark:text-zinc-500" />
                     {feature}
                   </div>
                 ))}
               </div>
             </CardContent>
             <div className="p-6 sm:p-8 pt-0">
-              <Button onClick={() => setIsModalOpen(true)} variant="outline" className="w-full border-emerald-500/30 hover:border-emerald-500/60 hover:bg-emerald-500/5 text-white font-bold py-6 uppercase tracking-tighter transition-all bg-gradient-to-r from-transparent to-emerald-500/5">
+              <Button onClick={() => setIsModalOpen(true)} variant="outline" className="w-full border-emerald-500/40 hover:border-emerald-500/70 hover:bg-emerald-500/5 text-zinc-900 font-bold py-6 uppercase tracking-tighter transition-all dark:text-white dark:border-emerald-500/30">
                 {t("plan_button")}
               </Button>
             </div>
@@ -1329,7 +1328,7 @@ export default function Home() {
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-emerald-500 to-emerald-400 text-black text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">{t("plan_studio_badge")}</div>
             <CardContent className="pt-10 px-6 sm:px-8 flex-1">
               <h3 className="text-xl font-bold text-white mb-6 uppercase tracking-widest">{t("plan_studio_name")}</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed mb-8 h-28 italic">
+              <p className="text-zinc-300 text-sm leading-relaxed mb-8 h-28 italic dark:text-zinc-400">
                 {t("plan_studio_desc")}
               </p>
               <div className="space-y-4 mb-8">
@@ -1356,10 +1355,10 @@ export default function Home() {
           </Card>
 
           {/* 3. GENERAL CONTRACTOR */}
-          <Card className="bg-gradient-to-br from-zinc-950 to-zinc-950/60 border-zinc-800/40 hover:border-blue-500/20 transition-all">
+          <Card className="bg-white border-stone-200 hover:border-blue-500/30 transition-all dark:bg-gradient-to-br dark:from-zinc-950 dark:to-zinc-950/60 dark:border-zinc-800/40 dark:hover:border-blue-500/20">
             <CardContent className="pt-10 px-6 sm:px-8 flex-1">
-              <h3 className="text-xl font-bold text-white mb-6 uppercase tracking-widest">{t("plan_contractor")}</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed mb-8 h-28 italic">
+              <h3 className="text-xl font-bold text-zinc-900 mb-6 uppercase tracking-widest dark:text-white">{t("plan_contractor")}</h3>
+              <p className="text-zinc-600 text-sm leading-relaxed mb-8 h-28 italic dark:text-zinc-400">
                 {t("plan_contractor_desc")}
               </p>
               <div className="space-y-4 mb-8">
@@ -1371,15 +1370,15 @@ export default function Home() {
                   t("plan_contractor_feature_5"),
                   t("plan_contractor_feature_6")
                 ].map((feature, i) => (
-                  <div key={i} className="flex items-center gap-3 text-sm text-zinc-300">
-                    <ShieldCheck className="w-4 h-4 text-zinc-500 shrink-0" />
+                  <div key={i} className="flex items-center gap-3 text-sm text-zinc-700 dark:text-zinc-300">
+                    <ShieldCheck className="w-4 h-4 text-zinc-400 shrink-0 dark:text-zinc-500" />
                     {feature}
                   </div>
                 ))}
               </div>
             </CardContent>
             <div className="p-6 sm:p-8 pt-0">
-              <Button onClick={() => setIsModalOpen(true)} variant="outline" className="w-full border-blue-500/30 hover:border-blue-500/60 hover:bg-blue-500/5 text-white font-bold py-6 uppercase tracking-tighter transition-all bg-gradient-to-r from-transparent to-blue-500/5">
+              <Button onClick={() => setIsModalOpen(true)} variant="outline" className="w-full border-blue-500/40 hover:border-blue-500/70 hover:bg-blue-500/5 text-zinc-900 font-bold py-6 uppercase tracking-tighter transition-all dark:text-white dark:border-blue-500/30">
                 {t("plan_button")}
               </Button>
             </div>
@@ -1389,22 +1388,22 @@ export default function Home() {
       </section>
 
       {/* INFRASTRUCTURE & SECURITY SECTION */}
-      <section className="py-12 md:py-20 border-t border-white/5 bg-gradient-to-b from-black via-emerald-950/10 to-black">
+      <section className="py-12 md:py-20 border-t border-black/5 bg-stone-50 dark:border-white/5 dark:bg-gradient-to-b dark:from-black dark:via-emerald-950/10 dark:to-black">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-emerald-300">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 via-zinc-800 to-emerald-600 dark:from-white dark:via-white dark:to-emerald-300">
               {t("infra_title")}
             </h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto font-light text-lg mt-6">
+            <p className="text-zinc-600 max-w-2xl mx-auto font-light text-lg mt-6 dark:text-zinc-400">
               {t("infra_subtitle")}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Left: Infrastructure */}
-            <Card className="bg-gradient-to-br from-zinc-900/60 to-zinc-950 border-emerald-500/20 hover:border-emerald-500/40 transition-all">
+            <Card className="bg-white border-stone-200 hover:border-emerald-500/40 transition-all dark:bg-gradient-to-br dark:from-zinc-900/60 dark:to-zinc-950 dark:border-emerald-500/20">
               <CardContent className="pt-8 pb-8 px-8">
-                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                <h3 className="text-xl font-bold text-zinc-900 mb-6 flex items-center gap-3 dark:text-white">
                   <span className="w-2 h-2 rounded-full bg-gradient-to-r from-emerald-400 to-blue-400"></span>
                   {t("infra_db")}
                 </h3>
@@ -1414,7 +1413,7 @@ export default function Home() {
                     t("infra_db_2"),
                     t("infra_db_3")
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-zinc-300">
+                    <li key={i} className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300">
                       <span className="text-emerald-400 mt-1">→</span>
                       <div className="relative inline-block">
                         {item.includes("datacenter") ? (
@@ -1441,9 +1440,9 @@ export default function Home() {
             </Card>
 
             {/* Right: Security */}
-            <Card className="bg-gradient-to-br from-zinc-900/60 to-zinc-950 border-blue-500/20 hover:border-blue-500/40 transition-all">
+            <Card className="bg-white border-stone-200 hover:border-blue-500/40 transition-all dark:bg-gradient-to-br dark:from-zinc-900/60 dark:to-zinc-950 dark:border-blue-500/20">
               <CardContent className="pt-8 pb-8 px-8">
-                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                <h3 className="text-xl font-bold text-zinc-900 mb-6 flex items-center gap-3 dark:text-white">
                   <span className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-400 to-emerald-400"></span>
                   {t("infra_security")}
                 </h3>
@@ -1453,7 +1452,7 @@ export default function Home() {
                     t("infra_sec_2"),
                     t("infra_sec_3")
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-zinc-300">
+                    <li key={i} className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300">
                       <span className="text-blue-400 mt-1">→</span>
                       {item}
                     </li>
@@ -1463,9 +1462,9 @@ export default function Home() {
             </Card>
 
             {/* Lambda & Serverless */}
-            <Card className="bg-gradient-to-br from-zinc-900/60 to-zinc-950 border-purple-500/20 hover:border-purple-500/40 transition-all">
+            <Card className="bg-white border-stone-200 hover:border-purple-500/40 transition-all dark:bg-gradient-to-br dark:from-zinc-900/60 dark:to-zinc-950 dark:border-purple-500/20">
               <CardContent className="pt-8 pb-8 px-8">
-                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                <h3 className="text-xl font-bold text-zinc-900 mb-6 flex items-center gap-3 dark:text-white">
                   <span className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-400"></span>
                   {t("infra_lambda")}
                 </h3>
@@ -1475,7 +1474,7 @@ export default function Home() {
                     t("infra_lam_2"),
                     t("infra_lam_3")
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-zinc-300">
+                    <li key={i} className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300">
                       <span className="text-purple-400 mt-1">→</span>
                       {item}
                     </li>
@@ -1485,9 +1484,9 @@ export default function Home() {
             </Card>
 
             {/* Compliance */}
-            <Card className="bg-gradient-to-br from-zinc-900/60 to-zinc-950 border-amber-500/20 hover:border-amber-500/40 transition-all">
+            <Card className="bg-white border-stone-200 hover:border-amber-500/40 transition-all dark:bg-gradient-to-br dark:from-zinc-900/60 dark:to-zinc-950 dark:border-amber-500/20">
               <CardContent className="pt-8 pb-8 px-8">
-                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                <h3 className="text-xl font-bold text-zinc-900 mb-6 flex items-center gap-3 dark:text-white">
                   <span className="w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-orange-400"></span>
                   {t("infra_compliance")}
                 </h3>
@@ -1497,7 +1496,7 @@ export default function Home() {
                     t("infra_comp_2"),
                     t("infra_comp_3")
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-zinc-300">
+                    <li key={i} className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300">
                       <span className="text-amber-400 mt-1">✓</span>
                       {item}
                     </li>
@@ -1508,8 +1507,8 @@ export default function Home() {
           </div>
 
           <div className="mt-12 text-center">
-            <p className="text-zinc-400 text-sm mb-4">{t("infra_footer")}</p>
-            <div className="flex items-center justify-center gap-2 text-zinc-300 text-xs">
+            <p className="text-zinc-600 text-sm mb-4 dark:text-zinc-400">{t("infra_footer")}</p>
+            <div className="flex items-center justify-center gap-2 text-zinc-700 text-xs dark:text-zinc-300">
               <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
               {t("infra_uptime")}
             </div>
@@ -1518,17 +1517,17 @@ export default function Home() {
       </section>
 
       {/* GLOSSARIO MINIMAL - SOLO AWS GENERICO */}
-      <section className="py-10 md:py-16 border-t border-white/5">
+      <section className="py-10 md:py-16 border-t border-black/5 dark:border-white/5">
         <div className="container mx-auto px-4 max-w-3xl">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 tracking-tight">Perché AWS?</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 mb-8 tracking-tight dark:text-white">Perché AWS?</h2>
 
           <div className="space-y-4">
             {/* AWS - Solo vantaggi pubblici */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative border-l-2 border-emerald-500/40 pl-5 py-3 hover:border-emerald-500/80 transition-colors">
-                <h3 className="font-semibold text-emerald-400 text-sm mb-1">Infrastruttura cloud scalabile</h3>
-                <p className="text-zinc-400 text-xs leading-relaxed">Cresci senza problemi. I server si adattano automaticamente al volume di lavoro, 24/7.</p>
+                <h3 className="font-semibold text-emerald-600 text-sm mb-1 dark:text-emerald-400">Infrastruttura cloud scalabile</h3>
+                <p className="text-zinc-600 text-xs leading-relaxed dark:text-zinc-400">Cresci senza problemi. I server si adattano automaticamente al volume di lavoro, 24/7.</p>
               </div>
             </div>
 
@@ -1536,8 +1535,8 @@ export default function Home() {
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative border-l-2 border-blue-500/40 pl-5 py-3 hover:border-blue-500/80 transition-colors">
-                <h3 className="font-semibold text-blue-400 text-sm mb-1">Ecologia</h3>
-                <p className="text-zinc-400 text-xs leading-relaxed">AWS gestisce centri dati ad alta efficienza energetica. Tu usi solo quello che consumi, niente sprechi.</p>
+                <h3 className="font-semibold text-blue-600 text-sm mb-1 dark:text-blue-400">Ecologia</h3>
+                <p className="text-zinc-600 text-xs leading-relaxed dark:text-zinc-400">AWS gestisce centri dati ad alta efficienza energetica. Tu usi solo quello che consumi, niente sprechi.</p>
               </div>
             </div>
 
@@ -1545,44 +1544,44 @@ export default function Home() {
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative border-l-2 border-purple-500/40 pl-5 py-3 hover:border-purple-500/80 transition-colors">
-                <h3 className="font-semibold text-purple-400 text-sm mb-1">Affidabilità enterprise</h3>
-                <p className="text-zinc-400 text-xs leading-relaxed">Infrastruttura usata dalle aziende più grandi del mondo. Sono loro che la testano.</p>
+                <h3 className="font-semibold text-purple-600 text-sm mb-1 dark:text-purple-400">Affidabilità enterprise</h3>
+                <p className="text-zinc-600 text-xs leading-relaxed dark:text-zinc-400">Infrastruttura usata dalle aziende più grandi del mondo. Sono loro che la testano.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <footer className="border-t border-white/10 py-8 text-zinc-600 text-xs bg-black">
+      <footer className="border-t border-black/10 py-8 text-zinc-500 text-xs bg-stone-100 dark:border-white/10 dark:bg-black dark:text-zinc-600">
         <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div>
-            <strong className="text-zinc-400 text-sm block mb-3 font-medium">Agrimensore SRLS</strong>
+            <strong className="text-zinc-600 text-sm block mb-3 font-medium dark:text-zinc-400">Agrimensore SRLS</strong>
             <p className="text-sm">Sede Legale:</p>
             <p className="text-xs text-zinc-500">Piazza Buffoni 5, 21013 Gallarate (VA)</p>
           </div>
           <div>
-            <strong className="text-zinc-400 text-sm block mb-3 font-medium">Azienda</strong>
+            <strong className="text-zinc-600 text-sm block mb-3 font-medium dark:text-zinc-400">Azienda</strong>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-zinc-300 transition-colors">Chi Siamo</a></li>
-              <li><a href="/privacy" className="hover:text-zinc-300 transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-zinc-800 transition-colors dark:hover:text-zinc-300">Chi Siamo</a></li>
+              <li><a href="/privacy" className="hover:text-zinc-800 transition-colors dark:hover:text-zinc-300">Privacy Policy</a></li>
             </ul>
           </div>
           <div>
-            <strong className="text-zinc-400 text-sm block mb-3 font-medium">Partnership</strong>
+            <strong className="text-zinc-600 text-sm block mb-3 font-medium dark:text-zinc-400">Partnership</strong>
             <ul className="space-y-2">
-              <li><a href="/partners" className="text-zinc-300 hover:text-white font-medium transition-colors">Diventa Partner</a></li>
-              <li className="text-zinc-600 text-xs">Scopri le opportunità di collaborazione</li>
-              <li className="text-zinc-600 text-xs">e i vantaggi esclusivi per i nostri partner</li>
+              <li><a href="/partners" className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors dark:text-zinc-300 dark:hover:text-white">Diventa Partner</a></li>
+              <li className="text-zinc-500 text-xs">Scopri le opportunità di collaborazione</li>
+              <li className="text-zinc-500 text-xs">e i vantaggi esclusivi per i nostri partner</li>
             </ul>
           </div>
           <div>
-            <strong className="text-zinc-400 text-sm block mb-3 font-medium">Dati Societari</strong>
+            <strong className="text-zinc-600 text-sm block mb-3 font-medium dark:text-zinc-400">Dati Societari</strong>
             <p className="mb-1">P.IVA / C.F.: 04130840129</p>
             <p className="mb-1">REA: VA-404094</p>
             <p className="mb-1">Registro Imprese di Varese</p>
             <p>Capitale: € 1.000,00 i.v.</p>
           </div>
         </div>
-        <div className="container mx-auto px-4 mt-6 pt-6 border-t border-zinc-800/50 text-center text-zinc-700 text-xs">
+        <div className="container mx-auto px-4 mt-6 pt-6 border-t border-stone-200 text-center text-zinc-500 text-xs dark:border-zinc-800/50 dark:text-zinc-700">
           <p>{t("footer_copyright")}</p>
         </div>
       </footer>

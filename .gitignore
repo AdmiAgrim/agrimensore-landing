@@ -1,0 +1,4 @@
+node_modules
+.next/
+agrimensore-landing/
+*.code-workspace
