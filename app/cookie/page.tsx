@@ -2,49 +2,55 @@
 
 export default function CookiePage() {
   return (
-    <div className="min-h-screen bg-stone-50 text-zinc-700 py-24 px-4 font-sans selection:bg-stone-200 dark:bg-black dark:text-zinc-300 dark:selection:bg-zinc-800">
+    <div className="min-h-screen bg-stone-50 text-zinc-700 py-24 px-4 font-sans selection:bg-stone-200">
       <div className="max-w-3xl mx-auto space-y-8">
-        <h1 className="text-4xl font-bold text-zinc-900 mb-2 dark:text-white">Informativa Cookie</h1>
-        <p className="text-zinc-500 text-sm">Ultimo aggiornamento: marzo 2026.</p>
+        <h1 className="text-4xl font-bold text-zinc-900 mb-2">Informativa Cookie</h1>
+        <p className="text-zinc-500 text-sm">Ultimo aggiornamento: maggio 2026.</p>
 
         <section>
-          <h2 className="text-xl font-semibold text-zinc-900 mt-8 mb-3 dark:text-white">Cosa sono i cookie?</h2>
+          <h2 className="text-xl font-semibold text-zinc-900 mt-8 mb-3">Cosa sono i cookie?</h2>
           <p>
             I cookie sono piccoli file di testo che i siti web salvano sul dispositivo dell&apos;utente durante la
-            navigazione. Vengono utilizzati per far funzionare il sito in modo efficiente.
+            navigazione. Vengono utilizzati per far funzionare il sito in modo efficiente e per fornire
+            informazioni ai proprietari del sito.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-zinc-900 mt-8 mb-3 dark:text-white">Cookie utilizzati da questo sito</h2>
+          <h2 className="text-xl font-semibold text-zinc-900 mt-8 mb-3">Cookie utilizzati da questo sito</h2>
           <p className="mb-4">
-            Questo sito utilizza <strong className="text-white">esclusivamente cookie tecnici o di sessione</strong>,
-            strettamente necessari al funzionamento delle pagine. Non vengono installati cookie di profilazione,
-            cookie di tracciamento, né pixel di retargeting di alcun tipo.
+            Questo sito utilizza cookie tecnici necessari al funzionamento e cookie analitici
+            (Google Analytics 4) per comprendere come i visitatori interagiscono con il sito.
+            I cookie analitici vengono installati <strong>solo previo consenso esplicito</strong> dell&apos;utente.
           </p>
-          <div className="border border-stone-200 rounded-lg overflow-hidden dark:border-zinc-800">
+          <div className="border border-stone-200 rounded-lg overflow-hidden">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-stone-100 text-zinc-600 dark:bg-zinc-900 dark:text-zinc-400">
+                <tr className="bg-stone-100 text-zinc-600">
                   <th className="text-left px-4 py-3 font-medium">Tipo</th>
                   <th className="text-left px-4 py-3 font-medium">Finalità</th>
                   <th className="text-left px-4 py-3 font-medium">Consenso richiesto</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-t border-stone-200 dark:border-zinc-800">
-                  <td className="px-4 py-3 text-zinc-900 dark:text-white">Cookie tecnici / di sessione</td>
-                  <td className="px-4 py-3 text-zinc-500 dark:text-zinc-400">Funzionamento del sito</td>
-                  <td className="px-4 py-3 text-green-500">No (esentati per legge)</td>
+                <tr className="border-t border-stone-200">
+                  <td className="px-4 py-3 text-zinc-900">Cookie tecnici</td>
+                  <td className="px-4 py-3 text-zinc-500">Funzionamento del sito e memorizzazione preferenza cookie</td>
+                  <td className="px-4 py-3 text-green-600">No (esentati per legge)</td>
                 </tr>
-                <tr className="border-t border-stone-200 dark:border-zinc-800">
-                  <td className="px-4 py-3 text-zinc-900 dark:text-white">Cookie di profilazione</td>
-                  <td className="px-4 py-3 text-zinc-500 dark:text-zinc-400">—</td>
+                <tr className="border-t border-stone-200">
+                  <td className="px-4 py-3 text-zinc-900">Google Analytics 4</td>
+                  <td className="px-4 py-3 text-zinc-500">Analisi anonima del traffico (pagine visitate, durata sessione, provenienza). IP anonimizzato.</td>
+                  <td className="px-4 py-3 text-amber-600">Sì — attivato solo con consenso</td>
+                </tr>
+                <tr className="border-t border-stone-200">
+                  <td className="px-4 py-3 text-zinc-900">Cookie di profilazione</td>
+                  <td className="px-4 py-3 text-zinc-500">—</td>
                   <td className="px-4 py-3 text-zinc-500">Non presenti</td>
                 </tr>
-                <tr className="border-t border-stone-200 dark:border-zinc-800">
-                  <td className="px-4 py-3 text-zinc-900 dark:text-white">Pixel / Retargeting</td>
-                  <td className="px-4 py-3 text-zinc-500 dark:text-zinc-400">—</td>
+                <tr className="border-t border-stone-200">
+                  <td className="px-4 py-3 text-zinc-900">Pixel / Retargeting</td>
+                  <td className="px-4 py-3 text-zinc-500">—</td>
                   <td className="px-4 py-3 text-zinc-500">Non presenti</td>
                 </tr>
               </tbody>
@@ -53,25 +59,46 @@ export default function CookiePage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-zinc-900 mt-8 mb-3 dark:text-white">Come disabilitare i cookie</h2>
-          <p>
-            Poiché i cookie tecnici sono necessari al funzionamento del sito, la loro disabilitazione potrebbe
-            comprometterne l&apos;usabilità. È comunque possibile gestire o eliminare i cookie dalle impostazioni
-            del proprio browser.
+          <h2 className="text-xl font-semibold text-zinc-900 mt-8 mb-3">Google Analytics 4</h2>
+          <p className="mb-2">
+            Utilizziamo Google Analytics 4, un servizio di analisi web fornito da Google Ireland Limited
+            (&quot;Google&quot;). Google Analytics utilizza cookie per raccogliere informazioni aggregate
+            e anonime sull&apos;utilizzo del sito.
+          </p>
+          <ul className="list-disc pl-5 space-y-1 text-zinc-600">
+            <li>L&apos;indirizzo IP viene anonimizzato (<code className="text-xs bg-stone-100 px-1 py-0.5 rounded">anonymize_ip: true</code>)</li>
+            <li>Nessun dato personale identificabile viene raccolto</li>
+            <li>I dati sono trattati da Google in conformità al GDPR</li>
+            <li>I cookie analitici vengono installati <strong>solo dopo il consenso esplicito</strong> dell&apos;utente tramite il banner</li>
+          </ul>
+          <p className="mt-3">
+            Per maggiori informazioni:{" "}
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer"
+              className="text-emerald-600 underline hover:text-emerald-500 transition-colors">
+              Privacy Policy di Google
+            </a>
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-zinc-900 mt-8 mb-3 dark:text-white">Contatti</h2>
+          <h2 className="text-xl font-semibold text-zinc-900 mt-8 mb-3">Come gestire il consenso</h2>
           <p>
-            Per qualsiasi domanda relativa all&apos;uso dei cookie, contattare il Titolare del Trattamento all&apos;indirizzo:{" "}
+            Puoi modificare la tua preferenza in qualsiasi momento cancellando i cookie del browser.
+            Alla visita successiva, il banner di consenso verrà mostrato nuovamente.
+            È inoltre possibile gestire o eliminare i cookie dalle impostazioni del proprio browser.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-zinc-900 mt-8 mb-3">Contatti</h2>
+          <p>
+            Per qualsiasi domanda relativa all&apos;uso dei cookie, contattare:{" "}
             <a
-              href="mailto:info@agrimensore.it"
-              className="text-zinc-400 underline hover:text-white transition-colors"
+              href="mailto:agrimensore@pec.it"
+              className="text-emerald-600 underline hover:text-emerald-500 transition-colors"
             >
-              info@agrimensore.it
+              agrimensore@pec.it
             </a>
-            .
           </p>
         </section>
       </div>
