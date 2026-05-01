@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { metadata as seoMetadata, jsonLd } from "@/lib/metadata";
+import AnalyticsProvider from "@/components/AnalyticsProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // Ho cambiato lang="en" in lang="it" (Fondamentale per la SEO italiana)
     <html lang="it">
       <head>
         {jsonLd.map((schema, i) => (
@@ -44,6 +44,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <AnalyticsProvider />
       </body>
     </html>
   );
