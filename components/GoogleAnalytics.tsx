@@ -4,7 +4,7 @@ import Script from "next/script"
 import { useEffect, useState } from "react"
 
 // Replace with your GA4 Measurement ID (or set NEXT_PUBLIC_GA_ID env var)
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXXXXXX"
+const GA_ID = "G-5631FDHV0H"
 
 export function useAnalyticsConsent() {
   const [consent, setConsent] = useState<boolean | null>(null)
@@ -29,7 +29,7 @@ export function useAnalyticsConsent() {
 }
 
 export default function GoogleAnalytics({ consent }: { consent: boolean | null }) {
-  if (consent !== true || GA_ID === "G-XXXXXXXXXX") return null
+  if (consent !== true) return null
 
   return (
     <>
