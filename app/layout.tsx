@@ -24,6 +24,25 @@ export const metadata: Metadata = {
   },
 };
 
+const GA_SCRIPT = `
+window.__loadGA = function() {
+  if (window.__gaLoaded) return;
+  window.__gaLoaded = true;
+  var s = document.createElement('script');
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-5631FDHV0H';
+  s.async = true;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', 'G-5631FDHV0H', { anonymize_ip: true });
+};
+if (localStorage.getItem('cookie_consent') === 'accepted') {
+  window.__loadGA();
+}
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -39,6 +58,7 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           />
         ))}
+        <script dangerouslySetInnerHTML={{ __html: GA_SCRIPT }} />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
