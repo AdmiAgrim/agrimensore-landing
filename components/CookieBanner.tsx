@@ -3,18 +3,30 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 
-interface CookieBannerProps {
-  onAccept: () => void
-  onReject: () => void
+declare global {
+  interface Window {
+    __loadGA?: () => void
+  }
 }
 
-export default function CookieBanner({ onAccept, onReject }: CookieBannerProps) {
+export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     const stored = localStorage.getItem("cookie_consent")
     if (!stored) setVisible(true)
   }, [])
+
+  const handleAccept = () => {
+    localStorage.setItem("cookie_consent", "accepted")
+    if (window.__loadGA) window.__loadGA()
+    setVisible(false)
+  }
+
+  const handleReject = () => {
+    localStorage.setItem("cookie_consent", "rejected")
+    setVisible(false)
+  }
 
   if (!visible) return null
 
@@ -33,13 +45,13 @@ export default function CookieBanner({ onAccept, onReject }: CookieBannerProps) 
         </div>
         <div className="flex gap-3 shrink-0">
           <button
-            onClick={() => { onReject(); setVisible(false) }}
+            onClick={handleReject}
             className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white border border-zinc-700 rounded-lg transition-colors"
           >
             Rifiuta
           </button>
           <button
-            onClick={() => { onAccept(); setVisible(false) }}
+            onClick={handleAccept}
             className="px-4 py-2 text-sm font-medium bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors"
           >
             Accetta
