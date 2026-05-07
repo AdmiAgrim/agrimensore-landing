@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ContactModal } from "@/components/ContactModal"
@@ -28,7 +28,70 @@ import {
   Smartphone,
   Menu,
   XIcon,
+  Apple,
+  Monitor,
+  Download,
+  Share,
+  MoreVertical,
 } from "lucide-react"
+
+/* ───────────────────────── platform detection ───────────────────────── */
+
+type Platform = "ios" | "android" | "desktop" | "unknown"
+
+const INSTALL_PLATFORMS: Array<{
+  id: Platform
+  label: string
+  icon: typeof Smartphone
+  accent: string
+  steps: Array<{ icon?: typeof Share; text: React.ReactNode }>
+}> = [
+  {
+    id: "ios",
+    label: "iPhone / iPad",
+    icon: Apple,
+    accent: "sky",
+    steps: [
+      { text: <>Apri <strong>app.agrimensore.com</strong> in Safari.</> },
+      { icon: Share, text: <>Tocca l&apos;icona <strong>Condividi</strong> in basso (quadrato con freccia ↑).</> },
+      { text: <>Scorri e tocca <strong>&quot;Aggiungi a schermata Home&quot;</strong>.</> },
+      { text: <>Conferma con <strong>&quot;Aggiungi&quot;</strong> in alto a destra.</> },
+    ],
+  },
+  {
+    id: "android",
+    label: "Android (Chrome)",
+    icon: Smartphone,
+    accent: "emerald",
+    steps: [
+      { text: <>Apri <strong>app.agrimensore.com</strong> in Chrome.</> },
+      { icon: MoreVertical, text: <>Tocca il menu <strong>⋮</strong> in alto a destra.</> },
+      { text: <>Tocca <strong>&quot;Aggiungi a schermata Home&quot;</strong> o accetta il banner di installazione.</> },
+      { text: <>Conferma toccando <strong>&quot;Installa&quot;</strong>.</> },
+    ],
+  },
+  {
+    id: "desktop",
+    label: "Desktop (Chrome / Edge)",
+    icon: Monitor,
+    accent: "indigo",
+    steps: [
+      { text: <>Apri <strong>app.agrimensore.com</strong> in Chrome o Edge.</> },
+      { icon: Download, text: <>Clicca l&apos;icona <strong>Installa</strong> nella barra degli indirizzi.</> },
+      { text: <>Clicca <strong>&quot;Installa&quot;</strong> nel popup.</> },
+      { text: <>L&apos;app si apre come finestra dedicata, sempre a portata di click.</> },
+    ],
+  },
+]
+
+function detectPlatform(): Platform {
+  if (typeof navigator === "undefined") return "unknown"
+  const ua = navigator.userAgent
+  if (/iPhone|iPad|iPod/i.test(ua) && !/CriOS/i.test(ua)) return "ios"
+  if (/Android/i.test(ua)) return "android"
+  if (/Chrome|Edg/i.test(ua)) return "desktop"
+  return "unknown"
+}
 
 /* ───────────────────────── constants ───────────────────────── */
 
@@ -172,6 +235,11 @@ export default function Home() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("yearly")
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [detectedPlatform, setDetectedPlatform] = useState<Platform>("unknown")
+
+  useEffect(() => {
+    setDetectedPlatform(detectPlatform())
+  }, [])
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false)
@@ -199,6 +267,9 @@ export default function Home() {
             </button>
             <button onClick={() => scrollToSection("soluzione")} className="hover:text-zinc-900 transition-colors">
               La Soluzione
+            </button>
+            <button onClick={() => scrollToSection("installa")} className="hover:text-zinc-900 transition-colors">
+              Installa
             </button>
             <button onClick={() => scrollToSection("sicurezza")} className="hover:text-zinc-900 transition-colors">
               Sicurezza
@@ -246,6 +317,9 @@ export default function Home() {
               </button>
               <button onClick={() => scrollToSection("soluzione")} className="text-sm text-zinc-600 text-left py-2">
                 La Soluzione
+              </button>
+              <button onClick={() => scrollToSection("installa")} className="text-sm text-zinc-600 text-left py-2">
+                Installa
               </button>
               <button onClick={() => scrollToSection("sicurezza")} className="text-sm text-zinc-600 text-left py-2">
                 Sicurezza
@@ -568,6 +642,119 @@ export default function Home() {
               </FadeIn>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── INSTALLA L'APP ─── */}
+      <section id="installa" className="py-16 sm:py-20 md:py-28 bg-zinc-50 border-y border-zinc-100">
+        <div className="container mx-auto px-4">
+          <FadeIn>
+            <div className="text-center mb-14">
+              <p className="text-sm font-semibold text-emerald-600 uppercase tracking-widest mb-3">
+                Come installare l&apos;app
+              </p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
+                Installala come un&apos;app nativa
+              </h2>
+              <p className="text-zinc-500 max-w-2xl mx-auto text-base sm:text-lg font-light">
+                Agrimensore è una <strong>Progressive Web App</strong>: aggiungila alla schermata Home
+                del tuo dispositivo per aprirla in un tap, anche offline. Niente App Store, niente
+                installazioni complesse.
+              </p>
+              {detectedPlatform !== "unknown" && (
+                <p className="text-sm text-emerald-700 mt-4 inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 px-4 py-1.5 rounded-full">
+                  <Smartphone className="w-3.5 h-3.5" />
+                  Stiamo rilevando: <strong>
+                    {detectedPlatform === "ios" ? "iPhone / iPad" : detectedPlatform === "android" ? "Android" : "Desktop"}
+                  </strong>
+                </p>
+              )}
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+            {INSTALL_PLATFORMS.map((platform, i) => {
+              const Icon = platform.icon
+              const isDetected = detectedPlatform === platform.id
+              const accentBg =
+                platform.accent === "sky"
+                  ? "bg-sky-50 border-sky-100"
+                  : platform.accent === "emerald"
+                    ? "bg-emerald-50 border-emerald-100"
+                    : "bg-indigo-50 border-indigo-100"
+              const accentText =
+                platform.accent === "sky"
+                  ? "text-sky-600"
+                  : platform.accent === "emerald"
+                    ? "text-emerald-600"
+                    : "text-indigo-600"
+              const accentRing =
+                platform.accent === "sky"
+                  ? "ring-sky-300"
+                  : platform.accent === "emerald"
+                    ? "ring-emerald-300"
+                    : "ring-indigo-300"
+
+              return (
+                <FadeIn key={platform.id} delay={i * 0.1}>
+                  <Card
+                    className={`bg-white border-zinc-100 shadow-sm hover:shadow-md transition-all h-full ${
+                      isDetected ? `ring-2 ${accentRing} shadow-md` : ""
+                    }`}
+                  >
+                    <CardContent className="p-7 flex flex-col h-full">
+                      <div className="flex items-center justify-between mb-5">
+                        <div className={`w-12 h-12 rounded-xl border flex items-center justify-center ${accentBg}`}>
+                          <Icon className={`w-6 h-6 ${accentText}`} />
+                        </div>
+                        {isDetected && (
+                          <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${accentBg} ${accentText}`}>
+                            Il tuo dispositivo
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="font-semibold text-lg mb-4 text-zinc-800">{platform.label}</h3>
+                      <ol className="space-y-3 flex-1">
+                        {platform.steps.map((step, j) => {
+                          const StepIcon = step.icon
+                          return (
+                            <li key={j} className="flex items-start gap-3 text-sm text-zinc-600 leading-relaxed">
+                              <span className={`shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-bold ${accentBg} ${accentText}`}>
+                                {j + 1}
+                              </span>
+                              <span className="flex-1">
+                                {StepIcon && (
+                                  <StepIcon className={`inline-block w-3.5 h-3.5 mr-1 mb-0.5 ${accentText}`} />
+                                )}
+                                {step.text}
+                              </span>
+                            </li>
+                          )
+                        })}
+                      </ol>
+                    </CardContent>
+                  </Card>
+                </FadeIn>
+              )
+            })}
+          </div>
+
+          <FadeIn delay={0.4}>
+            <div className="mt-12 text-center">
+              <a href={APP_URL}>
+                <Button
+                  size="lg"
+                  className="bg-zinc-900 text-white hover:bg-zinc-800 h-12 px-8 font-semibold text-base shadow-lg shadow-zinc-900/10 hover:shadow-xl hover:shadow-zinc-900/15 transition-all"
+                >
+                  <Download className="mr-2 w-4 h-4" />
+                  Apri l&apos;app per installare
+                </Button>
+              </a>
+              <p className="text-xs text-zinc-400 mt-4 max-w-md mx-auto">
+                Su Chrome ed Edge, l&apos;app proporrà l&apos;installazione automaticamente. Su iPhone, segui i passi qui sopra.
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
