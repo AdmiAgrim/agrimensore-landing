@@ -11,7 +11,6 @@ import {
   FileWarning,
   SearchX,
   ShieldCheck,
-  Link as LinkIcon,
   FolderLock,
   ArrowRight,
   QrCode,
@@ -170,8 +169,6 @@ const PLANS = {
     duration: null,
   },
 }
-
-// FAQ_ITEMS sourced from @/lib/features
 
 const PILLAR_ACCENT: Record<string, string> = {
   emerald: "bg-emerald-50 border-emerald-100 text-emerald-600",
@@ -767,7 +764,7 @@ export default function Home() {
             ))}
           </div>
           <FadeIn delay={0.2}>
-            <p className="text-center text-xs text-zinc-500 mt-8 max-w-3xl mx-auto">
+            <p className="text-center text-xs text-zinc-400 mt-8 max-w-3xl mx-auto">
               I dati dei cantieri restano nella regione di Milano (eu-south-1). L&apos;invio delle email transazionali avviene tramite un servizio che opera anche fuori da tale regione; nessun documento o codice fiscale di cantiere transita in queste email.
             </p>
           </FadeIn>
