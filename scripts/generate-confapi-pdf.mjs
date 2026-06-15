@@ -11,6 +11,10 @@ await mkdir(OUT_DIR, { recursive: true })
 const browser = await chromium.launch()
 try {
   const page = await browser.newPage()
+  // Suppress the site cookie banner (and GA) so they don't bleed into the PDF.
+  await page.addInitScript(() => {
+    try { localStorage.setItem("cookie_consent", "rejected") } catch {}
+  })
   await page.goto(TARGET_URL, { waitUntil: "networkidle" })
   await page.emulateMedia({ media: "print" })
   await page.pdf({
