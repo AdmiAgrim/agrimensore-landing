@@ -491,7 +491,7 @@ export default function Home() {
                 Tutto pronto all&apos;uso.
               </h2>
               <p className="text-zinc-500 max-w-2xl mx-auto text-base sm:text-lg font-light">
-                Dalla compliance ai verbali, dai mezzi alle scadenze: un assistente che organizza il cantiere per te e i tuoi collaboratori.
+                Dalla conformità ai verbali, dai mezzi alle scadenze: un assistente che organizza il cantiere per te e i tuoi collaboratori.
               </p>
             </div>
           </FadeIn>

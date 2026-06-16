@@ -35,7 +35,7 @@ export const PILLARS: Pillar[] = [
   {
     icon: ShieldCheck,
     accent: "emerald",
-    title: "Motore di compliance",
+    title: "Motore di conformità",
     desc: "Non un archivio vuoto: il software ti dice quali documenti servono per essere a norma — DURC di congruità, Patente a Crediti, esenzione SOA III, notifica preliminare.",
     tags: ["DURC congruità", "Patente a Crediti", "SOA"],
   },
