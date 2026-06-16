@@ -5,18 +5,16 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ContactModal } from "@/components/ContactModal"
 import { motion, useInView } from "framer-motion"
+import { AUDIENCE, PILLARS, FAQ_ITEMS } from "@/lib/features"
 import {
   HardHat,
   FileWarning,
   SearchX,
   ShieldCheck,
-  Link as LinkIcon,
   FolderLock,
   ArrowRight,
   QrCode,
   Users,
-  BadgeCheck,
-  FileText,
   ChevronRight,
   Check,
   X,
@@ -24,7 +22,6 @@ import {
   Database,
   Lock,
   CloudUpload,
-  Clock,
   Smartphone,
   Menu,
   XIcon,
@@ -107,7 +104,7 @@ const PLANS = {
     monthly: 0,
     yearly: 0,
     features: ["Gestione documenti", "Verbali e rapporti PDF", "QR code trasparenza"],
-    excluded: ["Gestione squadre", "Audit documentale", "Supporto prioritario"],
+    excluded: ["Squadra e Formazioni", "Mezzi e Attrezzature", "Supporto prioritario"],
     cta: "Inizia Gratis",
     ctaVariant: "outline" as const,
     highlight: false,
@@ -122,7 +119,7 @@ const PLANS = {
     monthly: 48,
     yearly: 480,
     features: ["Gestione documenti", "Verbali e rapporti PDF", "QR code trasparenza"],
-    excluded: ["Gestione squadre", "Audit documentale", "Supporto prioritario"],
+    excluded: ["Squadra e Formazioni", "Mezzi e Attrezzature", "Supporto prioritario"],
     cta: "Scegli Starter",
     ctaVariant: "outline" as const,
     highlight: false,
@@ -140,8 +137,8 @@ const PLANS = {
       "Gestione documenti",
       "Verbali e rapporti PDF",
       "QR code trasparenza",
-      "Gestione squadre",
-      "Audit documentale",
+      "Squadra e Formazioni",
+      "Mezzi e Attrezzature",
     ],
     excluded: ["Supporto prioritario"],
     cta: "Scegli Professional",
@@ -161,8 +158,8 @@ const PLANS = {
       "Gestione documenti",
       "Verbali e rapporti PDF",
       "QR code trasparenza",
-      "Gestione squadre",
-      "Audit documentale",
+      "Squadra e Formazioni",
+      "Mezzi e Attrezzature",
       "Supporto prioritario",
     ],
     excluded: [],
@@ -173,32 +170,17 @@ const PLANS = {
   },
 }
 
-const FAQ_ITEMS = [
-  {
-    q: "Che cos'è Agrimensore?",
-    a: "Agrimensore è una piattaforma web (PWA) per la gestione documentale dei cantieri edili. Permette di gestire imprese, lavoratori, documenti di conformità, verbali e QR code di trasparenza — tutto in un'unica piattaforma accessibile da browser.",
-  },
-  {
-    q: "Il software genera POS o DUVRI?",
-    a: "No. Agrimensore non genera POS né DUVRI. Il software genera automaticamente i verbali di cantiere (consegna lavori, sicurezza, coordinamento, ecc.) in base alle caratteristiche del progetto, e gestisce tutta la documentazione di conformità.",
-  },
-  {
-    q: "A cosa serve il QR Code di trasparenza?",
-    a: "Il QR Code soddisfa l'obbligo di trasparenza previsto dal D.Lgs. 81/2008. Viene stampato su un cartello A4 o A3 da affiggere all'ingresso del cantiere. Chiunque lo scansioni può verificare la conformità documentale delle imprese presenti.",
-  },
-  {
-    q: "Dove sono custoditi i miei dati?",
-    a: "Tutti i dati sono custoditi su server AWS nella regione eu-south-1 (Milano). Nessun dato viene trasferito fuori dall'Italia. I backup giornalieri del database sono conservati per 30 giorni, e ogni documento su S3 ha il versioning attivo.",
-  },
-  {
-    q: "Posso condividere documenti con tecnici esterni?",
-    a: "Sì. Puoi generare un Magic Link monouso da inviare al tecnico esterno. Senza bisogno di creare un account, il destinatario può caricare il documento richiesto direttamente in piattaforma.",
-  },
-  {
-    q: "Posso cancellare il mio account e i miei dati?",
-    a: "Sì. In conformità al GDPR (Art. 17 — Diritto alla cancellazione), è disponibile un endpoint dedicato che anonimizza tutti i dati personali associati al tuo account.",
-  },
-]
+const PILLAR_ACCENT: Record<string, string> = {
+  emerald: "bg-emerald-50 border-emerald-100 text-emerald-600",
+  blue: "bg-blue-50 border-blue-100 text-blue-600",
+  violet: "bg-violet-50 border-violet-100 text-violet-600",
+  amber: "bg-amber-50 border-amber-100 text-amber-600",
+  cyan: "bg-cyan-50 border-cyan-100 text-cyan-600",
+  rose: "bg-rose-50 border-rose-100 text-rose-600",
+  indigo: "bg-indigo-50 border-indigo-100 text-indigo-600",
+  teal: "bg-teal-50 border-teal-100 text-teal-600",
+  sky: "bg-sky-50 border-sky-100 text-sky-600",
+}
 
 /* ───────────────────────── helpers ───────────────────────── */
 
@@ -359,8 +341,7 @@ export default function Home() {
 
           <FadeIn delay={0.2}>
             <p className="text-lg sm:text-xl text-zinc-500 max-w-2xl mb-10 leading-relaxed font-light">
-              Verbali automatici, QR Code di trasparenza, gestione imprese e subappalti.
-              La piattaforma che digitalizza il tuo cantiere. Dati custoditi a Milano.
+              Il software ti dice quali documenti servono, genera i verbali, e tiene sotto controllo squadre, mezzi e scadenze. Cartello QR di trasparenza e dati custoditi a Milano. La piattaforma che mette il tuo cantiere a norma.
             </p>
           </FadeIn>
 
@@ -417,7 +398,31 @@ export default function Home() {
           <div className="flex items-center justify-center gap-10 sm:gap-16 opacity-40 grayscale">
             <span className="text-sm font-bold text-zinc-600 tracking-tight">Amazon Web Services</span>
             <span className="text-sm font-bold text-zinc-600 tracking-tight">Stripe</span>
-            <span className="text-sm font-bold text-zinc-600 tracking-tight">Aruba PEC</span>
+            <span className="text-sm font-bold text-zinc-600 tracking-tight">eu-south-1 · Milano</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── PER CHI È ─── */}
+      <section className="py-14 sm:py-16">
+        <div className="container mx-auto px-4">
+          <FadeIn>
+            <div className="text-center mb-10">
+              <p className="text-sm font-semibold text-emerald-600 uppercase tracking-widest mb-3">Per chi è</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+                Pensata per chi vive il cantiere
+              </h2>
+            </div>
+          </FadeIn>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {AUDIENCE.map((a, i) => (
+              <FadeIn key={a.title} delay={i * 0.08}>
+                <div className="h-full rounded-2xl border border-zinc-100 bg-white p-6 shadow-sm">
+                  <h3 className="font-semibold text-zinc-800 mb-2">{a.title}</h3>
+                  <p className="text-zinc-500 text-sm leading-relaxed">{a.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
@@ -486,108 +491,36 @@ export default function Home() {
                 Tutto pronto all&apos;uso.
               </h2>
               <p className="text-zinc-500 max-w-2xl mx-auto text-base sm:text-lg font-light">
-                Agrimensore non è uno spazio vuoto. È un assistente che organizza il lavoro
-                per te e i tuoi collaboratori.
+                Dalla conformità ai verbali, dai mezzi alle scadenze: un assistente che organizza il cantiere per te e i tuoi collaboratori.
               </p>
             </div>
           </FadeIn>
 
-          {/* Bento Grid */}
+          {/* Pillars Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
-            {/* Feature 1: Verbali — spans 2 cols on lg */}
-            <FadeIn className="lg:col-span-2">
-              <Card className="bg-white border-zinc-100 shadow-sm hover:shadow-md transition-all h-full group">
-                <CardContent className="p-8 sm:p-10">
-                  <div className="flex items-start gap-5">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center shrink-0 group-hover:bg-emerald-100 transition-colors">
-                      <FileText className="w-6 h-6 text-emerald-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-xl mb-2 text-zinc-800">Verbali automatici</h3>
-                      <p className="text-zinc-500 text-sm leading-relaxed mb-4">
-                        Il sistema genera automaticamente i verbali richiesti in base alle caratteristiche del cantiere:
-                        consegna lavori, sospensione, DPI, riunioni di sicurezza, sopralluoghi, evacuazione, verifiche ponteggio e altri ancora.
-                      </p>
+            {PILLARS.map((p, i) => {
+              const Icon = p.icon
+              return (
+                <FadeIn key={p.title} delay={(i % 3) * 0.08}>
+                  <Card className="bg-white border-zinc-100 shadow-sm hover:shadow-md transition-all h-full group">
+                    <CardContent className="p-7 flex flex-col h-full">
+                      <div className={`w-12 h-12 rounded-xl border flex items-center justify-center mb-5 ${PILLAR_ACCENT[p.accent]}`}>
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <h3 className="font-semibold text-lg mb-2 text-zinc-800">{p.title}</h3>
+                      <p className="text-zinc-500 text-sm leading-relaxed mb-4 flex-1">{p.desc}</p>
                       <div className="flex flex-wrap gap-2">
-                        {["Consegna Lavori", "Sicurezza", "Coordinamento", "DPI", "Ponteggio"].map((tag) => (
-                          <span key={tag} className="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-md font-medium border border-emerald-100">
+                        {p.tags.map((tag) => (
+                          <span key={tag} className="text-xs bg-zinc-50 text-zinc-600 px-2.5 py-1 rounded-md font-medium border border-zinc-100">
                             {tag}
                           </span>
                         ))}
                       </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </FadeIn>
-
-            {/* Feature 2: QR Trasparenza */}
-            <FadeIn delay={0.1}>
-              <Card className="bg-white border-zinc-100 shadow-sm hover:shadow-md transition-all h-full group">
-                <CardContent className="p-8">
-                  <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-5 group-hover:bg-blue-100 transition-colors">
-                    <QrCode className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <h3 className="font-semibold text-xl mb-2 text-zinc-800">QR Code Trasparenza</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">
-                    Stampa il cartello A4/A3 con QR Code per l&apos;ingresso del cantiere.
-                    Obbligo D.Lgs. 81/2008 soddisfatto. Semaforo verde/giallo/rosso per ogni impresa.
-                  </p>
-                </CardContent>
-              </Card>
-            </FadeIn>
-
-            {/* Feature 3: Badge Lavoratore */}
-            <FadeIn delay={0.15}>
-              <Card className="bg-white border-zinc-100 shadow-sm hover:shadow-md transition-all h-full group">
-                <CardContent className="p-8">
-                  <div className="w-12 h-12 rounded-xl bg-violet-50 border border-violet-100 flex items-center justify-center mb-5 group-hover:bg-violet-100 transition-colors">
-                    <BadgeCheck className="w-6 h-6 text-violet-600" />
-                  </div>
-                  <h3 className="font-semibold text-xl mb-2 text-zinc-800">Badge Digitale Lavoratore</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">
-                    Ogni lavoratore ha un badge con QR Code per la verifica immediata:
-                    idoneità sanitaria, formazione sicurezza, stato documenti. Stampabile.
-                  </p>
-                </CardContent>
-              </Card>
-            </FadeIn>
-
-            {/* Feature 4: Gestione Imprese */}
-            <FadeIn delay={0.2}>
-              <Card className="bg-white border-zinc-100 shadow-sm hover:shadow-md transition-all h-full group">
-                <CardContent className="p-8">
-                  <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center mb-5 group-hover:bg-amber-100 transition-colors">
-                    <Users className="w-6 h-6 text-amber-600" />
-                  </div>
-                  <h3 className="font-semibold text-xl mb-2 text-zinc-800">Gestione Imprese e Subappalti</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">
-                    Aggiungi imprese affidatarie, subappaltatori e lavoratori autonomi.
-                    Gerarchia completa dei subappalti con contratti, importi e classificazione SOA.
-                  </p>
-                </CardContent>
-              </Card>
-            </FadeIn>
-
-            {/* Feature 5: Magic Link — spans 2 cols on lg */}
-            <FadeIn delay={0.25} className="lg:col-span-2">
-              <Card className="bg-white border-zinc-100 shadow-sm hover:shadow-md transition-all h-full group">
-                <CardContent className="p-8 sm:p-10">
-                  <div className="flex items-start gap-5">
-                    <div className="w-12 h-12 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center shrink-0 group-hover:bg-cyan-100 transition-colors">
-                      <LinkIcon className="w-6 h-6 text-cyan-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-xl mb-2 text-zinc-800">Condivisione via Magic Link</h3>
-                      <p className="text-zinc-500 text-sm leading-relaxed">
-                        Invia un link sicuro monouso al tecnico esterno. Senza creare un account, il destinatario
-                        può caricare il documento richiesto direttamente in piattaforma. Rate-limited e tracciato.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </FadeIn>
+                    </CardContent>
+                  </Card>
+                </FadeIn>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -658,7 +591,7 @@ export default function Home() {
               </h2>
               <p className="text-zinc-500 max-w-2xl mx-auto text-base sm:text-lg font-light">
                 Agrimensore è una <strong>Progressive Web App</strong>: aggiungila alla schermata Home
-                del tuo dispositivo per aprirla in un tap, anche offline. Niente App Store, niente
+                del tuo dispositivo per aprirla in un tap, come un&apos;app nativa. Niente App Store, niente
                 installazioni complesse.
               </p>
               {detectedPlatform !== "unknown" && (
@@ -830,6 +763,11 @@ export default function Home() {
               </FadeIn>
             ))}
           </div>
+          <FadeIn delay={0.2}>
+            <p className="text-center text-xs text-zinc-400 mt-8 max-w-3xl mx-auto">
+              I dati dei cantieri restano nella regione di Milano (eu-south-1). L&apos;invio delle email transazionali avviene tramite un servizio che opera anche fuori da tale regione; nessun documento o codice fiscale di cantiere transita in queste email.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
