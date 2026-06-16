@@ -2,3 +2,7 @@ node_modules
 .next/
 agrimensore-landing/
 *.code-workspace
+
+# CONFAPI proposal: LOCAL ONLY — never commit/deploy
+public/downloads/
+app/print/confapi/
